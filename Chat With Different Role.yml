@@ -1,0 +1,382 @@
+app:
+  description: ''
+  icon: 🤖
+  icon_background: '#FFEAD5'
+  mode: advanced-chat
+  name: Chat With Different Role
+kind: app
+version: 0.1.1
+workflow:
+  conversation_variables:
+  - description: ''
+    id: dc3a0818-a7be-4241-bd76-8af16b8d8905
+    name: bot_name
+    value: Robot
+    value_type: string
+  environment_variables: []
+  features:
+    file_upload:
+      image:
+        enabled: false
+        number_limits: 3
+        transfer_methods:
+        - local_file
+        - remote_url
+    opening_statement: ''
+    retriever_resource:
+      enabled: true
+    sensitive_word_avoidance:
+      enabled: false
+    speech_to_text:
+      enabled: false
+    suggested_questions: []
+    suggested_questions_after_answer:
+      enabled: false
+    text_to_speech:
+      enabled: false
+      language: ''
+      voice: ''
+  graph:
+    edges:
+    - data:
+        sourceType: llm
+        targetType: answer
+      id: llm-answer
+      source: llm
+      sourceHandle: source
+      target: answer
+      targetHandle: target
+      type: custom
+    - data:
+        isInIteration: false
+        sourceType: start
+        targetType: question-classifier
+      id: 1723704565698-source-1723704702470-target
+      source: '1723704565698'
+      sourceHandle: source
+      target: '1723704702470'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: question-classifier
+        targetType: llm
+      id: 1723704702470-1-llm-target
+      source: '1723704702470'
+      sourceHandle: '1'
+      target: llm
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: question-classifier
+        targetType: parameter-extractor
+      id: 1723704702470-2-1723704793477-target
+      source: '1723704702470'
+      sourceHandle: '2'
+      target: '1723704793477'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: parameter-extractor
+        targetType: code
+      id: 1723704793477-source-1723704895776-target
+      source: '1723704793477'
+      sourceHandle: source
+      target: '1723704895776'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: code
+        targetType: answer
+      id: 1723704895776-source-1723704871329-target
+      source: '1723704895776'
+      sourceHandle: source
+      target: '1723704871329'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: answer
+        targetType: assigner
+      id: 1723704871329-source-1723704994983-target
+      source: '1723704871329'
+      sourceHandle: source
+      target: '1723704994983'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: assigner
+        targetType: answer
+      id: 1723704994983-source-1723705028681-target
+      source: '1723704994983'
+      sourceHandle: source
+      target: '1723705028681'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    nodes:
+    - data:
+        desc: ''
+        selected: false
+        title: Start
+        type: start
+        variables: []
+      height: 54
+      id: '1723704565698'
+      position:
+        x: 30
+        y: 300
+      positionAbsolute:
+        x: 30
+        y: 300
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        memory:
+          role_prefix:
+            assistant: ''
+            user: ''
+          window:
+            enabled: false
+            size: 10
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: gpt-4o-mini
+          provider: openai
+        prompt_template:
+        - id: 2f3e35c8-5152-475e-a4b0-83e48a3a3fa3
+          role: system
+          text: Now your name is {{#conversation.bot_name#}} when answer to the user,
+            Say your name first.
+        selected: false
+        title: LLM
+        type: llm
+        variables: []
+        vision:
+          configs:
+            detail: high
+          enabled: true
+      height: 98
+      id: llm
+      position:
+        x: 638
+        y: 300
+      positionAbsolute:
+        x: 638
+        y: 300
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        answer: '{{#llm.text#}}'
+        desc: ''
+        selected: false
+        title: Answer
+        type: answer
+        variables: []
+      height: 107
+      id: answer
+      position:
+        x: 942
+        y: 300
+      positionAbsolute:
+        x: 942
+        y: 300
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        classes:
+        - id: '1'
+          name: Normal Chat
+        - id: '2'
+          name: Would like to change the bot's name
+        desc: ''
+        instructions: ''
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: gpt-4o-mini
+          provider: openai
+        query_variable_selector:
+        - '1723704565698'
+        - sys.query
+        selected: false
+        title: Question Classifier
+        topics: []
+        type: question-classifier
+      height: 200
+      id: '1723704702470'
+      position:
+        x: 334
+        y: 300
+      positionAbsolute:
+        x: 334
+        y: 300
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        desc: ''
+        instruction: ''
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: gpt-4o-mini
+          provider: openai
+        parameters:
+        - description: Extract the name from the query
+          name: bot_name
+          required: false
+          type: string
+        query:
+        - sys
+        - query
+        reasoning_mode: prompt
+        selected: false
+        title: Parameter Extractor
+        type: parameter-extractor
+        variables: []
+      height: 98
+      id: '1723704793477'
+      position:
+        x: 638
+        y: 438
+      positionAbsolute:
+        x: 638
+        y: 438
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        answer: 'Original Name: {{#1723704895776.result#}}
+
+          Extracted Name: {{#1723704793477.bot_name#}}
+
+
+          '
+        desc: ''
+        selected: false
+        title: Answer 2
+        type: answer
+        variables: []
+      height: 141
+      id: '1723704871329'
+      position:
+        x: 1246
+        y: 438
+      positionAbsolute:
+        x: 1246
+        y: 438
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        code: "\ndef main(arg1: str) -> dict:\n    return {\n        \"result\": arg1,\n\
+          \    }\n"
+        code_language: python3
+        desc: ''
+        outputs:
+          result:
+            children: null
+            type: string
+        selected: false
+        title: Get Original Name
+        type: code
+        variables:
+        - value_selector:
+          - conversation
+          - bot_name
+          variable: arg1
+      height: 54
+      id: '1723704895776'
+      position:
+        x: 942
+        y: 464.5
+      positionAbsolute:
+        x: 942
+        y: 464.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        assigned_variable_selector:
+        - conversation
+        - bot_name
+        desc: ''
+        input_variable_selector:
+        - '1723704793477'
+        - bot_name
+        selected: false
+        title: Variable Assigner
+        type: assigner
+        write_mode: over-write
+      height: 132
+      id: '1723704994983'
+      position:
+        x: 1550
+        y: 438
+      positionAbsolute:
+        x: 1550
+        y: 438
+      selected: true
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        answer: My named changed to {{#1723704793477.bot_name#}}
+        desc: ''
+        selected: false
+        title: Answer 3
+        type: answer
+        variables: []
+      height: 123
+      id: '1723705028681'
+      position:
+        x: 1854
+        y: 438
+      positionAbsolute:
+        x: 1854
+        y: 438
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    viewport:
+      x: 23.200000000000045
+      y: 5.0499999999999545
+      zoom: 0.7
