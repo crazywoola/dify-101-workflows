@@ -1,0 +1,601 @@
+app:
+  description: ''
+  icon: 🤖
+  icon_background: '#FFEAD5'
+  mode: advanced-chat
+  name: Basic Text Game Demo
+  use_icon_as_answer_icon: false
+kind: app
+version: 0.1.2
+workflow:
+  conversation_variables: []
+  environment_variables: []
+  features:
+    file_upload:
+      image:
+        enabled: false
+        number_limits: 3
+        transfer_methods:
+        - local_file
+        - remote_url
+    opening_statement: ''
+    retriever_resource:
+      enabled: false
+    sensitive_word_avoidance:
+      enabled: false
+    speech_to_text:
+      enabled: false
+    suggested_questions: []
+    suggested_questions_after_answer:
+      enabled: false
+    text_to_speech:
+      enabled: false
+      language: ''
+      voice: ''
+  graph:
+    edges:
+    - data:
+        isInIteration: false
+        sourceType: template-transform
+        targetType: answer
+      id: 1725535638537-source-answer-target
+      source: '1725535638537'
+      sourceHandle: source
+      target: answer
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: start
+        targetType: if-else
+      id: 1725535628613-source-1725535932523-target
+      source: '1725535628613'
+      sourceHandle: source
+      target: '1725535932523'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: if-else
+        targetType: template-transform
+      id: 1725535932523-true-1725535638537-target
+      source: '1725535932523'
+      sourceHandle: 'true'
+      target: '1725535638537'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: if-else
+        targetType: answer
+      id: 1725535932523-da06486a-1381-44ee-9830-e3dd7d15c7e2-1725536315644-target
+      source: '1725535932523'
+      sourceHandle: da06486a-1381-44ee-9830-e3dd7d15c7e2
+      target: '1725536315644'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: if-else
+        targetType: answer
+      id: 1725535932523-bac86d54-7701-4975-9c01-cbf9ea04ab35-1725536344181-target
+      source: '1725535932523'
+      sourceHandle: bac86d54-7701-4975-9c01-cbf9ea04ab35
+      target: '1725536344181'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: if-else
+        targetType: answer
+      id: 1725535932523-5863e21d-9cf0-4264-9a8b-4508dba1ca21-1725536355424-target
+      source: '1725535932523'
+      sourceHandle: 5863e21d-9cf0-4264-9a8b-4508dba1ca21
+      target: '1725536355424'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: if-else
+        targetType: answer
+      id: 1725535932523-47e1fa1b-9d4c-47ea-b0f9-5ab5c876f249-1725536365001-target
+      source: '1725535932523'
+      sourceHandle: 47e1fa1b-9d4c-47ea-b0f9-5ab5c876f249
+      target: '1725536365001'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: if-else
+        targetType: answer
+      id: 1725535932523-51282101-7833-4e47-9fb3-b814e6f85cc6-1725536375831-target
+      source: '1725535932523'
+      sourceHandle: 51282101-7833-4e47-9fb3-b814e6f85cc6
+      target: '1725536375831'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: if-else
+        targetType: answer
+      id: 1725535932523-3c6492b8-60ed-4f95-93de-30c1dcdbce52-1725536389024-target
+      source: '1725535932523'
+      sourceHandle: 3c6492b8-60ed-4f95-93de-30c1dcdbce52
+      target: '1725536389024'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: if-else
+        targetType: answer
+      id: 1725535932523-82d8a4fe-23e3-49dd-a3c8-f854da678f17-1725536399503-target
+      source: '1725535932523'
+      sourceHandle: 82d8a4fe-23e3-49dd-a3c8-f854da678f17
+      target: '1725536399503'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: if-else
+        targetType: answer
+      id: 1725535932523-bd4b7940-3837-4c21-82a6-5ea2ecddfd55-1725536422973-target
+      source: '1725535932523'
+      sourceHandle: bd4b7940-3837-4c21-82a6-5ea2ecddfd55
+      target: '1725536422973'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: if-else
+        targetType: answer
+      id: 1725535932523-false-1725536431151-target
+      source: '1725535932523'
+      sourceHandle: 'false'
+      target: '1725536431151'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    nodes:
+    - data:
+        desc: ''
+        selected: false
+        title: Start
+        type: start
+        variables: []
+      height: 54
+      id: '1725535628613'
+      position:
+        x: 30
+        y: 479
+      positionAbsolute:
+        x: 30
+        y: 479
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        answer: '{{#1725535638537.output#}}'
+        desc: ''
+        selected: false
+        title: Resp 1
+        type: answer
+        variables: []
+      height: 107
+      id: answer
+      position:
+        x: 942
+        y: 479
+      positionAbsolute:
+        x: 942
+        y: 479
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        desc: ''
+        selected: false
+        template: '| Action                          | Description                     |
+
+          |----------------------------------|---------------------------------|
+
+          | [Look Around](abbr:LA)           | Examine your surroundings       |
+
+          | [Pick Up](abbr:PU)               | Collect an item                 |
+
+          | [Open Door](abbr:OD)             | Open a nearby door              |
+
+          | [Attack](abbr:ATK)               | Engage in combat with an enemy  |
+
+          | [Use Item](abbr:UI)              | Use an item from your inventory |
+
+          | [Talk to NPC](abbr:TNPC)         | Start a conversation with an NPC|
+
+          | [Run Away](abbr:RA)              | Flee from a dangerous situation |
+
+          | [Inspect Item](abbr:II)          | Closely examine an object       |
+
+          | [Equip Weapon](abbr:EW)          | Equip a weapon for combat       |
+
+          | [Save Game](abbr:SG)             | Save your current progress      |
+
+          '
+        title: Actions List
+        type: template-transform
+        variables: []
+      height: 54
+      id: '1725535638537'
+      position:
+        x: 638
+        y: 479
+      positionAbsolute:
+        x: 638
+        y: 479
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        cases:
+        - case_id: 'true'
+          conditions:
+          - comparison_operator: contains
+            id: 1e928a93-33d1-441a-8d74-4ca3f488569d
+            value: actions
+            varType: string
+            variable_selector:
+            - sys
+            - query
+          id: 'true'
+          logical_operator: and
+        - case_id: da06486a-1381-44ee-9830-e3dd7d15c7e2
+          conditions:
+          - comparison_operator: contains
+            id: 68184893-2eaf-46f3-8eed-4176ce1333ba
+            value: LA
+            varType: string
+            variable_selector:
+            - sys
+            - query
+          id: da06486a-1381-44ee-9830-e3dd7d15c7e2
+          logical_operator: and
+        - case_id: bac86d54-7701-4975-9c01-cbf9ea04ab35
+          conditions:
+          - comparison_operator: contains
+            id: 53cb2a76-c0e1-47e6-855c-a6e78c5e5a77
+            value: PU
+            varType: string
+            variable_selector:
+            - sys
+            - query
+          id: bac86d54-7701-4975-9c01-cbf9ea04ab35
+          logical_operator: and
+        - case_id: 5863e21d-9cf0-4264-9a8b-4508dba1ca21
+          conditions:
+          - comparison_operator: contains
+            id: 73453f36-36a2-49c3-bc9b-b5cac6af570f
+            value: ATK
+            varType: string
+            variable_selector:
+            - sys
+            - query
+          id: 5863e21d-9cf0-4264-9a8b-4508dba1ca21
+          logical_operator: and
+        - case_id: 47e1fa1b-9d4c-47ea-b0f9-5ab5c876f249
+          conditions:
+          - comparison_operator: contains
+            id: e0a6e215-ea30-410b-b1f7-6060069e34c2
+            value: UI
+            varType: string
+            variable_selector:
+            - sys
+            - query
+          id: 47e1fa1b-9d4c-47ea-b0f9-5ab5c876f249
+          logical_operator: and
+        - case_id: 51282101-7833-4e47-9fb3-b814e6f85cc6
+          conditions:
+          - comparison_operator: contains
+            id: a6d5ef29-a496-46d6-8b72-d6967815f030
+            value: TNPC
+            varType: string
+            variable_selector:
+            - sys
+            - query
+          id: 51282101-7833-4e47-9fb3-b814e6f85cc6
+          logical_operator: and
+        - case_id: 3c6492b8-60ed-4f95-93de-30c1dcdbce52
+          conditions:
+          - comparison_operator: contains
+            id: b10cb8f0-5eea-4ff5-88f9-c62e29282aff
+            value: RA
+            varType: string
+            variable_selector:
+            - sys
+            - query
+          id: 3c6492b8-60ed-4f95-93de-30c1dcdbce52
+          logical_operator: and
+        - case_id: 82d8a4fe-23e3-49dd-a3c8-f854da678f17
+          conditions:
+          - comparison_operator: contains
+            id: 21d57bfe-e22f-48e8-8b45-59d10ceb928e
+            value: II
+            varType: string
+            variable_selector:
+            - sys
+            - query
+          id: 82d8a4fe-23e3-49dd-a3c8-f854da678f17
+          logical_operator: and
+        - case_id: 986773c9-ce3a-4105-872d-927dafaba219
+          conditions:
+          - comparison_operator: contains
+            id: e178dc82-a946-44f5-8490-b07bbe0758e0
+            value: EW
+            varType: string
+            variable_selector:
+            - sys
+            - query
+          id: 986773c9-ce3a-4105-872d-927dafaba219
+          logical_operator: and
+        - case_id: bd4b7940-3837-4c21-82a6-5ea2ecddfd55
+          conditions:
+          - comparison_operator: contains
+            id: 40b18df4-36f8-4e23-9aba-c065350affb3
+            value: SG
+            varType: string
+            variable_selector:
+            - sys
+            - query
+          id: bd4b7940-3837-4c21-82a6-5ea2ecddfd55
+          logical_operator: and
+        desc: ''
+        selected: false
+        title: 条件分支
+        type: if-else
+      height: 558
+      id: '1725535932523'
+      position:
+        x: 334
+        y: 479
+      positionAbsolute:
+        x: 334
+        y: 479
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        author: banana
+        desc: ''
+        height: 276
+        selected: false
+        showAuthor: true
+        text: '{"root":{"children":[{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"|
+          Action                          | Description                     |","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"|----------------------------------|---------------------------------|","type":"text","version":1}],"direction":null,"format":"","indent":0,"type":"paragraph","version":1,"textFormat":0},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"|
+          [Look Around](abbr:LA)           | Examine your surroundings       |","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"|
+          [Pick Up](abbr:PU)               | Collect an item                 |","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"|
+          [Open Door](abbr:OD)             | Open a nearby door              |","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"|
+          [Attack](abbr:ATK)               | Engage in combat with an enemy  |","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"|
+          [Use Item](abbr:UI)              | Use an item from your inventory |","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"|
+          [Talk to NPC](abbr:TNPC)         | Start a conversation with an NPC|","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"|
+          [Run Away](abbr:RA)              | Flee from a dangerous situation |","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"|
+          [Inspect Item](abbr:II)          | Closely examine an object       |","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"|
+          [Equip Weapon](abbr:EW)          | Equip a weapon for combat       |","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"|
+          [Save Game](abbr:SG)             | Save your current progress      |","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0}],"direction":"ltr","format":"","indent":0,"type":"root","version":1}}'
+        theme: blue
+        title: ''
+        type: ''
+        width: 504
+      height: 276
+      id: '1725536179506'
+      position:
+        x: 334
+        y: 145.5
+      positionAbsolute:
+        x: 334
+        y: 145.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom-note
+      width: 504
+    - data:
+        answer: Examine your surroundings
+        desc: ''
+        selected: false
+        title: Resp 2
+        type: answer
+        variables: []
+      height: 104
+      id: '1725536315644'
+      position:
+        x: 638
+        y: 573
+      positionAbsolute:
+        x: 638
+        y: 573
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        answer: Collect an item
+        desc: ''
+        selected: false
+        title: Resp 3
+        type: answer
+        variables: []
+      height: 104
+      id: '1725536344181'
+      position:
+        x: 638
+        y: 717
+      positionAbsolute:
+        x: 638
+        y: 717
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        answer: 'Engage in combat with an enemy '
+        desc: ''
+        selected: false
+        title: Resp 4
+        type: answer
+        variables: []
+      height: 104
+      id: '1725536355424'
+      position:
+        x: 638
+        y: 861
+      positionAbsolute:
+        x: 638
+        y: 861
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        answer: Use an item from your inventory
+        desc: ''
+        selected: false
+        title: Resp 5
+        type: answer
+        variables: []
+      height: 104
+      id: '1725536365001'
+      position:
+        x: 638
+        y: 1004.0015835483266
+      positionAbsolute:
+        x: 638
+        y: 1004.0015835483266
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        answer: Start a conversation with an NPC
+        desc: ''
+        selected: false
+        title: Resp 6
+        type: answer
+        variables: []
+      height: 104
+      id: '1725536375831'
+      position:
+        x: 638
+        y: 1149
+      positionAbsolute:
+        x: 638
+        y: 1149
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        answer: Flee from a dangerous situation
+        desc: ''
+        selected: false
+        title: Resp 7
+        type: answer
+        variables: []
+      height: 104
+      id: '1725536389024'
+      position:
+        x: 638
+        y: 1293
+      positionAbsolute:
+        x: 638
+        y: 1293
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        answer: Closely examine an object
+        desc: ''
+        selected: false
+        title: Resp 8
+        type: answer
+        variables: []
+      height: 104
+      id: '1725536399503'
+      position:
+        x: 638
+        y: 1437.9984164516732
+      positionAbsolute:
+        x: 638
+        y: 1437.9984164516732
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        answer: 'Equip a weapon for combat '
+        desc: ''
+        selected: false
+        title: Resp 9
+        type: answer
+        variables: []
+      height: 104
+      id: '1725536422973'
+      position:
+        x: 638
+        y: 1581
+      positionAbsolute:
+        x: 638
+        y: 1581
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        answer: Invalid Action.  Use [List Actions](abbr:actions) to see all available
+          command.
+        desc: ''
+        selected: false
+        title: 直接回复 10
+        type: answer
+        variables: []
+      height: 136
+      id: '1725536431151'
+      position:
+        x: 638
+        y: 1723.5714285714284
+      positionAbsolute:
+        x: 638
+        y: 1723.5714285714284
+      selected: true
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    viewport:
+      x: 289.9759920262404
+      y: -43.74025620465022
+      zoom: 0.6843948775782184
