@@ -1,0 +1,727 @@
+app:
+  description: ''
+  icon: 🤖
+  icon_background: '#FFEAD5'
+  mode: workflow
+  name: 小红图片生成
+  use_icon_as_answer_icon: false
+kind: app
+version: 0.1.2
+workflow:
+  conversation_variables: []
+  environment_variables:
+  - description: ''
+    id: 17a4e349-2ed9-4f8a-9a17-bb09c50fe68b
+    name: x_api_key
+    value: 283235011493236776.Qm7YrKlJ7UOga20ivQyctfzV7MejIy0d
+    value_type: string
+  features:
+    file_upload:
+      image:
+        enabled: false
+        number_limits: 3
+        transfer_methods:
+        - local_file
+        - remote_url
+    opening_statement: ''
+    retriever_resource:
+      enabled: false
+    sensitive_word_avoidance:
+      enabled: false
+    speech_to_text:
+      enabled: false
+    suggested_questions: []
+    suggested_questions_after_answer:
+      enabled: false
+    text_to_speech:
+      enabled: false
+      language: ''
+      voice: ''
+  graph:
+    edges:
+    - data:
+        isInIteration: false
+        sourceType: template-transform
+        targetType: end
+      id: 1721962510958-source-1721710662921-target
+      selected: false
+      source: '1721962510958'
+      sourceHandle: source
+      target: '1721710662921'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: http-request
+        targetType: code
+      id: 1721710297246-source-1721995648918-target
+      selected: false
+      source: '1721710297246'
+      sourceHandle: source
+      target: '1721995648918'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: code
+        targetType: template-transform
+      id: 1721995648918-source-1721962510958-target
+      selected: false
+      source: '1721995648918'
+      sourceHandle: source
+      target: '1721962510958'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: start
+        targetType: llm
+      id: 1721710272051-source-1722008727743-target
+      selected: false
+      source: '1721710272051'
+      sourceHandle: source
+      target: '1722008727743'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: llm
+        targetType: tool
+      id: 1722008727743-source-1722008744281-target
+      selected: false
+      source: '1722008727743'
+      sourceHandle: source
+      target: '1722008744281'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: tool
+        targetType: template-transform
+      id: 1722008744281-source-1722008766362-target
+      selected: false
+      source: '1722008744281'
+      sourceHandle: source
+      target: '1722008766362'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: code
+        targetType: http-request
+      id: 1721962039116-source-1721710297246-target
+      selected: false
+      source: '1721962039116'
+      sourceHandle: source
+      target: '1721710297246'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: template-transform
+        targetType: code
+      id: 1722008766362-source-1722064022901-target
+      source: '1722008766362'
+      sourceHandle: source
+      target: '1722064022901'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: code
+        targetType: if-else
+      id: 1722064022901-source-1722511717281-target
+      source: '1722064022901'
+      sourceHandle: source
+      target: '1722511717281'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: template-transform
+        targetType: variable-aggregator
+      id: 1721731659123-source-1722511730108-target
+      source: '1721731659123'
+      sourceHandle: source
+      target: '1722511730108'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: variable-aggregator
+        targetType: code
+      id: 1722511730108-source-1721962039116-target
+      source: '1722511730108'
+      sourceHandle: source
+      target: '1721962039116'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: template-transform
+        targetType: variable-aggregator
+      id: 1722510760980-source-1722511730108-target
+      source: '1722510760980'
+      sourceHandle: source
+      target: '1722511730108'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: if-else
+        targetType: template-transform
+      id: 1722511717281-true-1721731659123-target
+      source: '1722511717281'
+      sourceHandle: 'true'
+      target: '1721731659123'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: if-else
+        targetType: template-transform
+      id: 1722511717281-false-1722510760980-target
+      source: '1722511717281'
+      sourceHandle: 'false'
+      target: '1722510760980'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    nodes:
+    - data:
+        desc: ''
+        selected: false
+        title: Start
+        type: start
+        variables:
+        - label: Title
+          max_length: 255
+          options: []
+          required: true
+          type: text-input
+          variable: title
+        - label: content
+          max_length: 4000
+          options: []
+          required: true
+          type: paragraph
+          variable: content
+        - label: Style
+          max_length: 48
+          options:
+          - 洛可可艺术
+          - 哥特式艺术
+          - 巴洛克艺术
+          - 蒸汽朋克
+          - 赛博朋克
+          - 海洋朋克
+          - 新古典风格
+          - 极简风格
+          - 抽象风格
+          required: true
+          type: select
+          variable: style
+        - label: extra
+          max_length: 200
+          options: []
+          required: true
+          type: text-input
+          variable: extra
+        - label: Template
+          max_length: 48
+          options:
+          - 小红书封面图
+          - 古诗配图
+          required: true
+          type: select
+          variable: template
+      height: 194
+      id: '1721710272051'
+      position:
+        x: 30
+        y: 297
+      positionAbsolute:
+        x: 30
+        y: 297
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        authorization:
+          config:
+            api_key: '{{#env.x_api_key#}}'
+            header: X-API-Key
+            type: custom
+          type: api-key
+        body:
+          data: '{{#1721962039116.result#}}'
+          type: json
+        desc: ''
+        headers: Content-Type:application/json
+        method: post
+        params: ''
+        selected: false
+        timeout:
+          max_connect_timeout: 0
+          max_read_timeout: 0
+          max_write_timeout: 0
+        title: ImgRender
+        type: http-request
+        url: https://api.imgrender.cn/open/v1/pics
+        variables: []
+      height: 106
+      id: '1721710297246'
+      position:
+        x: 2766
+        y: 297
+      positionAbsolute:
+        x: 2766
+        y: 297
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        desc: ''
+        outputs:
+        - value_selector:
+          - '1721962510958'
+          - output
+          variable: image_url
+        selected: false
+        title: End
+        type: end
+      height: 90
+      id: '1721710662921'
+      position:
+        x: 3678
+        y: 297
+      positionAbsolute:
+        x: 3678
+        y: 297
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        desc: ''
+        selected: false
+        template: "{\n    \"width\": 1080,\n    \"height\": 1130,\n    \"backgroundColor\"\
+          : \"{{ bgColor }}\",\n    \"texts\":[\n        {\n            \"x\": 50,\n\
+          \            \"y\": 50,\n            \"text\": \"{{ title }}\",\n      \
+          \      \"font\": \"SourceHanSansSC-Bold\",\n            \"fontSize\": 48,\n\
+          \            \"color\": \"#000000\",\n            \"width\": 960,\n    \
+          \        \"textAlign\": \"left\",\n            \"zIndex\": 1\n        },\n\
+          \        {\n            \"x\": 50,\n            \"y\": 1050,\n         \
+          \   \"text\": \"{{ footer }}\",\n            \"font\": \"SourceHanSansSC-Normal\"\
+          ,\n            \"fontSize\": 24,\n            \"color\": \"#000000\",\n\
+          \            \"width\": 960,\n            \"textAlign\": \"left\",\n   \
+          \         \"zIndex\": 1\n        }\n    ],\n    \"lines\":[\n        {\n\
+          \            \"startX\": 50,\n            \"startY\": 1030,\n          \
+          \  \"endX\": 1030,\n            \"endY\": 1030,\n            \"width\":\
+          \ 1,\n            \"color\": \"#000000\",\n            \"zIndex\": 1\n \
+          \       }\n    ],\n    \"shapes\":[\n        {\n            \"type\": \"\
+          rectangle\",\n            \"x\": 0,\n            \"y\": 0,\n           \
+          \ \"width\": 1080,\n            \"height\": 1130,\n            \"color\"\
+          : \"#C6FF8C\",\n            \"zIndex\": 0\n        }\n    ],\n    \"images\"\
+          : [\n        {\n            \"x\": 140,\n            \"y\": 160,\n     \
+          \       \"width\": 800,\n            \"height\": 800,\n            \"url\"\
+          : \"{{ output }}\",\n            \"borderRadius\": 60,\n            \"zIndex\"\
+          : 1\n        }\n    ]\n}\n"
+        title: 小红书封面
+        type: template-transform
+        variables:
+        - value_selector:
+          - '1721710272051'
+          - title
+          variable: title
+        - value_selector:
+          - '1721710272051'
+          - extra
+          variable: footer
+        - value_selector:
+          - '1722008766362'
+          - output
+          variable: output
+        - value_selector:
+          - '1722064022901'
+          - result
+          variable: bgColor
+      height: 54
+      id: '1721731659123'
+      position:
+        x: 1854
+        y: 297
+      positionAbsolute:
+        x: 1854
+        y: 297
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        code: "function main({ arg1 }) {\n    try {\n        // Clean the JSON string\
+          \ if needed\n        const cleaned = arg1.replace(/\\\\([\"'])/g, '$1').replace(/\\\
+          r\\n|\\r|\\n/g, '');\n        // Return the result\n        return {\n \
+          \           result: cleaned\n        };\n    } catch (error) {\n       \
+          \ // Handle JSON parsing errors\n        return {\n            result: `${error}`\n\
+          \        };\n    }\n}\n"
+        code_language: javascript
+        desc: ''
+        outputs:
+          result:
+            children: null
+            type: string
+        selected: false
+        title: Clean text
+        type: code
+        variables:
+        - value_selector:
+          - '1722511730108'
+          - output
+          variable: arg1
+      height: 54
+      id: '1721962039116'
+      position:
+        x: 2462
+        y: 297
+      positionAbsolute:
+        x: 2462
+        y: 297
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        desc: ''
+        selected: false
+        template: '![img]({{ arg1 }})'
+        title: MD Image
+        type: template-transform
+        variables:
+        - value_selector:
+          - '1721995648918'
+          - result
+          variable: arg1
+      height: 54
+      id: '1721962510958'
+      position:
+        x: 3374
+        y: 297
+      positionAbsolute:
+        x: 3374
+        y: 297
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        code: "function main({ arg1 }) {\n    try {\n        // Clean the JSON string\
+          \ if needed\n        const cleaned = arg1.replace(/\\\\([\"'])/g, '$1').replace(/\\\
+          r\\n|\\r|\\n/g, '');\n        // Parse the JSON\n        const result =\
+          \ JSON.parse(cleaned);\n        // Return the result\n        return {\n\
+          \            result: result.data.url\n        };\n    } catch (error) {\n\
+          \        // Handle JSON parsing errors\n        return {\n            result:\
+          \ `${error}`\n        };\n    }\n}\n"
+        code_language: javascript
+        desc: ''
+        outputs:
+          result:
+            children: null
+            type: string
+        selected: false
+        title: Extract & Clean URL
+        type: code
+        variables:
+        - value_selector:
+          - '1721710297246'
+          - body
+          variable: arg1
+      height: 54
+      id: '1721995648918'
+      position:
+        x: 3070
+        y: 297
+      positionAbsolute:
+        x: 3070
+        y: 297
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        model:
+          completion_params:
+            max_tokens: 2001
+            temperature: 0.7
+          mode: chat
+          name: gpt-4o-mini-2024-07-18
+          provider: openai
+        prompt_template:
+        - id: 64646c5d-b79d-4fc7-a643-99f8f2eced36
+          role: system
+          text: 根据 {{#1721710272051.content#}} 生成一段场景描述
+        - id: 4f0a6de4-0a91-4aa0-8e03-71da2dab82ff
+          role: user
+          text: 需要 {{#1721710272051.style#}}的绘画 Prompt，只需要输出 Prompt 的内容
+        selected: false
+        title: LLM
+        type: llm
+        variables: []
+        vision:
+          configs:
+            detail: high
+          enabled: true
+      height: 98
+      id: '1722008727743'
+      position:
+        x: 334
+        y: 297
+      positionAbsolute:
+        x: 334
+        y: 297
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        desc: ''
+        provider_id: cogview
+        provider_name: cogview
+        provider_type: builtin
+        selected: false
+        title: CogView 3 绘画
+        tool_configurations:
+          n: 1
+          quality: standard
+          size: square
+          style: vivid
+        tool_label: CogView 3 绘画
+        tool_name: cogview3
+        tool_parameters:
+          prompt:
+            type: mixed
+            value: '{{#1722008727743.text#}}'
+        type: tool
+      height: 168
+      id: '1722008744281'
+      position:
+        x: 638
+        y: 297
+      positionAbsolute:
+        x: 638
+        y: 297
+      selected: true
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        desc: ''
+        selected: false
+        template: '{{ arg1[0].url }}'
+        title: Extract Image URL
+        type: template-transform
+        variables:
+        - value_selector:
+          - '1722008744281'
+          - json
+          variable: arg1
+      height: 54
+      id: '1722008766362'
+      position:
+        x: 942
+        y: 297
+      positionAbsolute:
+        x: 942
+        y: 297
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        code: "\nfunction main() {\n    const popArtColors = [\n        \"#FF5733\"\
+          , \"#FFBD33\", \"#DBFF33\", \"#75FF33\", \"#33FF57\",\n        \"#33FFBD\"\
+          , \"#33DBFF\", \"#3375FF\", \"#5733FF\", \"#BD33FF\",\n        \"#FF33DB\"\
+          , \"#FF3375\", \"#FF3357\", \"#FF3333\", \"#FF6633\",\n        \"#FF9933\"\
+          , \"#FFCC33\", \"#CCFF33\", \"#99FF33\", \"#66FF33\",\n        \"#33FF33\"\
+          , \"#33FF66\", \"#33FF99\", \"#33FFCC\", \"#33FFFF\",\n        \"#33CCFF\"\
+          , \"#3399FF\", \"#3366FF\", \"#3333FF\", \"#6633FF\",\n        \"#9933FF\"\
+          , \"#CC33FF\", \"#FF33FF\", \"#FF33CC\", \"#FF3399\",\n        \"#FF3366\"\
+          , \"#FF3333\", \"#FF0066\", \"#FF0099\", \"#FF00CC\",\n        \"#FF00FF\"\
+          , \"#CC00FF\", \"#9900FF\", \"#6600FF\", \"#3300FF\",\n        \"#0033FF\"\
+          , \"#0066FF\", \"#0099FF\", \"#00CCFF\", \"#00FFFF\"\n    ];\n\nconst randomColor\
+          \ = popArtColors[Math.floor(Math.random() * popArtColors.length)];\n\n \
+          \   return {\n        result: randomColor\n    }\n}\n"
+        code_language: javascript
+        desc: ''
+        outputs:
+          result:
+            children: null
+            type: string
+        selected: false
+        title: Background Color
+        type: code
+        variables: []
+      height: 54
+      id: '1722064022901'
+      position:
+        x: 1246
+        y: 297
+      positionAbsolute:
+        x: 1246
+        y: 297
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        desc: ''
+        selected: false
+        template: "{\n\t\"width\": 1359,\n\t\"height\": 627,\n\t\"backgroundColor\"\
+          : \"#ffffff\",\n\t\"texts\": [\n\t\t{\n\t\t\t\"x\": 96,\n\t\t\t\"y\": 173,\n\
+          \t\t\t\"text\": \"{{ content }}\",\n\t\t\t\"width\": 542,\n\t\t\t\"font\"\
+          : \"jiangxizhuokai\",\n\t\t\t\"fontSize\": 32,\n\t\t\t\"lineHeight\": 40,\n\
+          \t\t\t\"textAlign\": \"left\",\n\t\t\t\"zIndex\": 4,\n\t\t\t\"color\": \"\
+          #000000\"\n\t\t},\n\t\t{\n\t\t\t\"x\": 98,\n\t\t\t\"y\": 96,\n\t\t\t\"text\"\
+          : \"{{ title }}\",\n\t\t\t\"width\": 200,\n\t\t\t\"font\": \"jiangxizhuokai\"\
+          ,\n\t\t\t\"fontSize\": 40,\n\t\t\t\"textAlign\": \"left\",\n\t\t\t\"zIndex\"\
+          : 3,\n\t\t\t\"color\": \"#000000\"\n\t\t}\n\t],\n\t\"images\": [\n\t\t{\n\
+          \t\t\t\"x\": 721,\n\t\t\t\"y\": 150,\n\t\t\t\"width\": 543,\n\t\t\t\"height\"\
+          : 385,\n\t\t\t\"url\": \"{{ output }}\",\n\t\t\t\"zIndex\": 2\n\t\t}\n\t\
+          ],\n\t\"blocks\": [\n\t\t{\n\t\t\t\"x\": 0,\n\t\t\t\"y\": 0,\n\t\t\t\"width\"\
+          : 1359,\n\t\t\t\"height\": 627,\n\t\t\t\"zIndex\": 1,\n\t\t\t\"backgroundColor\"\
+          : \"{{ bgColor }}\"\n\t\t}\n\t]\n}"
+        title: 古诗配图
+        type: template-transform
+        variables:
+        - value_selector:
+          - '1722064022901'
+          - result
+          variable: bgColor
+        - value_selector:
+          - '1721710272051'
+          - extra
+          variable: footer
+        - value_selector:
+          - '1721710272051'
+          - content
+          variable: content
+        - value_selector:
+          - '1721710272051'
+          - title
+          variable: title
+        - value_selector:
+          - '1722008766362'
+          - output
+          variable: output
+      height: 54
+      id: '1722510760980'
+      position:
+        x: 1854
+        y: 391
+      positionAbsolute:
+        x: 1854
+        y: 391
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        cases:
+        - case_id: 'true'
+          conditions:
+          - comparison_operator: is
+            id: 8786e134-f1d7-454a-be4f-444eb02b6d72
+            value: 小红书封面图
+            varType: string
+            variable_selector:
+            - '1721710272051'
+            - template
+          id: 'true'
+          logical_operator: and
+        desc: ''
+        selected: false
+        title: IF/ELSE
+        type: if-else
+      height: 126
+      id: '1722511717281'
+      position:
+        x: 1550
+        y: 297
+      positionAbsolute:
+        x: 1550
+        y: 297
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        advanced_settings:
+          group_enabled: false
+          groups:
+          - groupId: 90c7cc0c-27f8-4ea5-a139-17b1406c7349
+            group_name: Group1
+            output_type: string
+            variables:
+            - - '1722510760980'
+              - output
+            - - '1721731659123'
+              - output
+        desc: ''
+        output_type: string
+        selected: false
+        title: Variable Aggregator
+        type: variable-aggregator
+        variables:
+        - - '1722510760980'
+          - output
+        - - '1721731659123'
+          - output
+      height: 139
+      id: '1722511730108'
+      position:
+        x: 2158
+        y: 297
+      positionAbsolute:
+        x: 2158
+        y: 297
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    viewport:
+      x: -76.66720041758708
+      y: 72.12137700424955
+      zoom: 0.6218457158277827
