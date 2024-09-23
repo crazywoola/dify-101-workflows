@@ -13,7 +13,7 @@ workflow:
   - description: ''
     id: 17a4e349-2ed9-4f8a-9a17-bb09c50fe68b
     name: x_api_key
-    value: 283235011493236776.Qm7YrKlJ7UOga20ivQyctfzV7MejIy0d
+    value: INPUT-YOUR-KEY
     value_type: string
   features:
     file_upload:
