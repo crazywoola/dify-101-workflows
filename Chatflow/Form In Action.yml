@@ -1,0 +1,315 @@
+app:
+  description: ''
+  icon: 🤖
+  icon_background: '#FFEAD5'
+  mode: advanced-chat
+  name: Form In Action
+  use_icon_as_answer_icon: false
+kind: app
+version: 0.1.2
+workflow:
+  conversation_variables: []
+  environment_variables: []
+  features:
+    file_upload:
+      allowed_file_extensions:
+      - .JPG
+      - .JPEG
+      - .PNG
+      - .GIF
+      - .WEBP
+      - .SVG
+      allowed_file_types:
+      - image
+      allowed_file_upload_methods:
+      - local_file
+      - remote_url
+      enabled: false
+      fileUploadConfig:
+        audio_file_size_limit: 50
+        batch_count_limit: 5
+        file_size_limit: 15
+        image_file_size_limit: 10
+        video_file_size_limit: 100
+      image:
+        enabled: false
+        number_limits: 3
+        transfer_methods:
+        - local_file
+        - remote_url
+      number_limits: 3
+    opening_statement: ''
+    retriever_resource:
+      enabled: true
+    sensitive_word_avoidance:
+      enabled: false
+    speech_to_text:
+      enabled: false
+    suggested_questions: []
+    suggested_questions_after_answer:
+      enabled: false
+    text_to_speech:
+      enabled: false
+      language: ''
+      voice: ''
+  graph:
+    edges:
+    - data:
+        isInIteration: false
+        sourceType: template-transform
+        targetType: answer
+      id: 1730211289933-source-answer-target
+      selected: false
+      source: '1730211289933'
+      sourceHandle: source
+      target: answer
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: start
+        targetType: question-classifier
+      id: 1730211273879-source-1730211595179-target
+      selected: false
+      source: '1730211273879'
+      sourceHandle: source
+      target: '1730211595179'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: question-classifier
+        targetType: template-transform
+      id: 1730211595179-1730211670508-1730211289933-target
+      selected: false
+      source: '1730211595179'
+      sourceHandle: '1730211670508'
+      target: '1730211289933'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: question-classifier
+        targetType: answer
+      id: 1730211595179-1-1730211729717-target
+      source: '1730211595179'
+      sourceHandle: '1'
+      target: '1730211729717'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: question-classifier
+        targetType: llm
+      id: 1730211595179-2-1730211847756-target
+      source: '1730211595179'
+      sourceHandle: '2'
+      target: '1730211847756'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: llm
+        targetType: answer
+      id: 1730211847756-source-1730211714676-target
+      source: '1730211847756'
+      sourceHandle: source
+      target: '1730211714676'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    nodes:
+    - data:
+        desc: ''
+        selected: false
+        title: Start
+        type: start
+        variables: []
+      height: 54
+      id: '1730211273879'
+      position:
+        x: 30
+        y: 330
+      positionAbsolute:
+        x: 30
+        y: 330
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        answer: '{{#1730211289933.output#}}'
+        desc: ''
+        selected: false
+        title: Service Request Form
+        type: answer
+        variables: []
+      height: 103
+      id: answer
+      position:
+        x: 972
+        y: 862.1428571428571
+      positionAbsolute:
+        x: 972
+        y: 862.1428571428571
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        desc: ''
+        selected: false
+        template: "<form data-format=\"text\">\n  <label for=\"nickname\">Nickname</label>\n\
+          \  <input type=\"text\" name=\"nickname\" />\n  <label for=\"service_request\"\
+          >Service Request</label>\n  <textarea name=\"service_request\"></textarea>\n\
+          \  <button data-size=\"medium\" data-variant=\"primary\">Submit</button>\n\
+          </form>"
+        title: Log your service request
+        type: template-transform
+        variables: []
+      height: 54
+      id: '1730211289933'
+      position:
+        x: 620.8571428571429
+        y: 862.1428571428571
+      positionAbsolute:
+        x: 620.8571428571429
+        y: 862.1428571428571
+      selected: true
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        classes:
+        - id: '1'
+          name: 'Something like the example
+
+            <example>
+
+            nickname: banana
+
+            service_request: I would like to have a banana pie
+
+            </example>'
+        - id: '2'
+          name: Other topics
+        - id: '1730211670508'
+          name: Request a service ticket
+        desc: ''
+        instructions: ''
+        model:
+          completion_params:
+            frequency_penalty: 0.5
+            presence_penalty: 0.5
+            temperature: 0.2
+            top_p: 0.75
+          mode: chat
+          name: chatgpt-4o-latest
+          provider: openai
+        query_variable_selector:
+        - '1730211273879'
+        - sys.query
+        selected: false
+        title: Question Classifier
+        topics: []
+        type: question-classifier
+        vision:
+          enabled: false
+      height: 260
+      id: '1730211595179'
+      position:
+        x: 334
+        y: 330
+      positionAbsolute:
+        x: 334
+        y: 330
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        answer: '{{#1730211847756.text#}}'
+        desc: ''
+        selected: false
+        title: Bot
+        type: answer
+        variables: []
+      height: 103
+      id: '1730211714676'
+      position:
+        x: 964.8571428571429
+        y: 571.4285714285714
+      positionAbsolute:
+        x: 964.8571428571429
+        y: 571.4285714285714
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        answer: We have received your request :)
+        desc: ''
+        selected: false
+        title: Process the request
+        type: answer
+        variables: []
+      height: 100
+      id: '1730211729717'
+      position:
+        x: 638
+        y: 324.71428571428567
+      positionAbsolute:
+        x: 638
+        y: 324.71428571428567
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: gpt-4o-mini
+          provider: openai
+        prompt_template:
+        - id: 23d37bef-5d46-4042-bc43-75cf8cdefa5d
+          role: system
+          text: You are a helpful assistant
+        selected: false
+        title: LLM
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 98
+      id: '1730211847756'
+      position:
+        x: 638
+        y: 563
+      positionAbsolute:
+        x: 638
+        y: 563
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    viewport:
+      x: -123.74610249348984
+      y: -186.35028700007967
+      zoom: 0.9029553980177497
