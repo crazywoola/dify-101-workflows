@@ -1,0 +1,600 @@
+app:
+  description: ''
+  icon: 🤖
+  icon_background: '#FFEAD5'
+  mode: advanced-chat
+  name: MusicFlow
+  use_icon_as_answer_icon: false
+dependencies:
+- current_identifier: null
+  type: marketplace
+  value:
+    marketplace_plugin_unique_identifier: langgenius/openai:0.0.22@fa668d0ec3b434270453ede311196acaad0531ad9e3d5561cd622e6508cd3254
+kind: app
+version: 0.2.0
+workflow:
+  conversation_variables:
+  - description: ''
+    id: e2a325f8-1338-45a7-ac2f-a7d4fd908cde
+    name: count
+    selector:
+    - conversation
+    - count
+    value:
+    - 1
+    - 2
+    - 3
+    value_type: array[number]
+  - description: ''
+    id: e9b517a8-415b-4dd3-95ed-319d13c332ed
+    name: music
+    selector:
+    - conversation
+    - music
+    value: ''
+    value_type: string
+  environment_variables: []
+  features:
+    file_upload:
+      allowed_file_extensions:
+      - .JPG
+      - .JPEG
+      - .PNG
+      - .GIF
+      - .WEBP
+      - .SVG
+      allowed_file_types:
+      - image
+      allowed_file_upload_methods:
+      - local_file
+      - remote_url
+      enabled: false
+      fileUploadConfig:
+        audio_file_size_limit: 50
+        batch_count_limit: 5
+        file_size_limit: 15
+        image_file_size_limit: 10
+        video_file_size_limit: 100
+        workflow_file_upload_limit: 10
+      image:
+        enabled: false
+        number_limits: 3
+        transfer_methods:
+        - local_file
+        - remote_url
+      number_limits: 3
+    opening_statement: ''
+    retriever_resource:
+      enabled: true
+    sensitive_word_avoidance:
+      enabled: false
+    speech_to_text:
+      enabled: false
+    suggested_questions: []
+    suggested_questions_after_answer:
+      enabled: false
+    text_to_speech:
+      enabled: false
+      language: ''
+      voice: ''
+  graph:
+    edges:
+    - data:
+        isInIteration: true
+        isInLoop: false
+        iteration_id: '1745930063555'
+        sourceType: assigner
+        targetType: answer
+      id: 1745930086190-source-1745930144972-target
+      selected: false
+      source: '1745930086190'
+      sourceHandle: source
+      target: '1745930144972'
+      targetHandle: target
+      type: custom
+      zIndex: 1002
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: start
+        targetType: assigner
+      id: 1745203527055-source-1745930299951-target
+      selected: false
+      source: '1745203527055'
+      sourceHandle: source
+      target: '1745930299951'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: assigner
+        targetType: iteration
+      id: 1745930299951-source-1745930063555-target
+      selected: false
+      source: '1745930299951'
+      sourceHandle: source
+      target: '1745930063555'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: iteration
+        targetType: answer
+      id: 1745930063555-source-answer-target
+      selected: false
+      source: '1745930063555'
+      sourceHandle: source
+      target: answer
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: true
+        isInLoop: false
+        iteration_id: '1745930063555'
+        sourceType: iteration-start
+        targetType: if-else
+      id: 1745930063555start-source-1745931155271-target
+      selected: false
+      source: 1745930063555start
+      sourceHandle: source
+      target: '1745931155271'
+      targetHandle: target
+      type: custom
+      zIndex: 1002
+    - data:
+        isInIteration: true
+        isInLoop: false
+        iteration_id: '1745930063555'
+        sourceType: if-else
+        targetType: llm
+      id: 1745931155271-true-1745930077619-target
+      selected: false
+      source: '1745931155271'
+      sourceHandle: 'true'
+      target: '1745930077619'
+      targetHandle: target
+      type: custom
+      zIndex: 1002
+    - data:
+        isInIteration: true
+        isInLoop: false
+        iteration_id: '1745930063555'
+        sourceType: if-else
+        targetType: llm
+      id: 1745931155271-false-1745931181359-target
+      selected: false
+      source: '1745931155271'
+      sourceHandle: 'false'
+      target: '1745931181359'
+      targetHandle: target
+      type: custom
+      zIndex: 1002
+    - data:
+        isInIteration: true
+        isInLoop: false
+        iteration_id: '1745930063555'
+        sourceType: llm
+        targetType: variable-aggregator
+      id: 1745930077619-source-1745931372641-target
+      source: '1745930077619'
+      sourceHandle: source
+      target: '1745931372641'
+      targetHandle: target
+      type: custom
+      zIndex: 1002
+    - data:
+        isInIteration: true
+        isInLoop: false
+        iteration_id: '1745930063555'
+        sourceType: variable-aggregator
+        targetType: assigner
+      id: 1745931372641-source-1745930086190-target
+      source: '1745931372641'
+      sourceHandle: source
+      target: '1745930086190'
+      targetHandle: target
+      type: custom
+      zIndex: 1002
+    - data:
+        isInIteration: true
+        isInLoop: false
+        iteration_id: '1745930063555'
+        sourceType: llm
+        targetType: variable-aggregator
+      id: 1745931181359-source-1745931372641-target
+      source: '1745931181359'
+      sourceHandle: source
+      target: '1745931372641'
+      targetHandle: target
+      type: custom
+      zIndex: 1002
+    nodes:
+    - data:
+        desc: ''
+        selected: false
+        title: Start
+        type: start
+        variables: []
+      height: 54
+      id: '1745203527055'
+      position:
+        x: 30
+        y: 507
+      positionAbsolute:
+        x: 30
+        y: 507
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        answer: '
+
+          ## Result
+
+
+          {{#conversation.music#}}'
+        desc: ''
+        selected: false
+        title: Answer
+        type: answer
+        variables: []
+      height: 105
+      id: answer
+      position:
+        x: 1239.142857142857
+        y: 607
+      positionAbsolute:
+        x: 1239.142857142857
+        y: 607
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        desc: ''
+        error_handle_mode: terminated
+        height: 632
+        is_parallel: false
+        iterator_selector:
+        - conversation
+        - count
+        output_selector:
+        - '1745931372641'
+        - output
+        output_type: array[string]
+        parallel_nums: 10
+        selected: false
+        start_node_id: 1745930063555start
+        title: Iteration
+        type: iteration
+        width: 1188
+      height: 632
+      id: '1745930063555'
+      position:
+        x: 30
+        y: 607
+      positionAbsolute:
+        x: 30
+        y: 607
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 1188
+      zIndex: 1
+    - data:
+        desc: ''
+        isInIteration: true
+        selected: false
+        title: ''
+        type: iteration-start
+      draggable: false
+      height: 48
+      id: 1745930063555start
+      parentId: '1745930063555'
+      position:
+        x: 60
+        y: 101.5
+      positionAbsolute:
+        x: 90
+        y: 708.5
+      selectable: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom-iteration-start
+      width: 44
+      zIndex: 1002
+    - data:
+        context:
+          enabled: true
+          variable_selector:
+          - conversation
+          - music
+        desc: ''
+        isInIteration: true
+        isInLoop: false
+        iteration_id: '1745930063555'
+        model:
+          completion_params: {}
+          mode: chat
+          name: gpt-4.1-mini-2025-04-14
+          provider: langgenius/openai/openai
+        prompt_template:
+        - id: 91c1acbb-38ce-499a-8abf-bc4cf87e84d2
+          role: system
+          text: "Based on {{#context#}} \n- Revise the song in abc annotation. \n\
+            - Add some complex combinations by common Piano practices. \n- Be creative.\n\
+            \n## Example\n\n```abc\nX: 1\nT: Cooley's\nM: 4/4\nL: 1/8\nR: reel\nK:\
+            \ Emin\n|:D2|EB{c}BA B2 EB|~B2 AB dBAG|FDAD BDAD|FDAD dAFD|\nEBBA B2 EB|B2\
+            \ AB defg|afe^c dBAF|DEFD E2:|\n|:gf|eB B2 efge|eB B2 gedB|A2 FA DAFA|A2\
+            \ FA defg|\neB B2 eBgB|eB B2 defg|afe^c dBAF|DEFD E2:|\n```\n\nCorrect\
+            \ and Output the result in this format only.\n\n```abc\nCONTENT\n```"
+        selected: false
+        title: Revise
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 90
+      id: '1745930077619'
+      parentId: '1745930063555'
+      position:
+        x: 418
+        y: 73.35714285714278
+      positionAbsolute:
+        x: 448
+        y: 680.3571428571428
+      selected: true
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+      zIndex: 1002
+    - data:
+        desc: ''
+        isInIteration: true
+        isInLoop: false
+        items:
+        - input_type: variable
+          operation: over-write
+          value:
+          - '1745931372641'
+          - output
+          variable_selector:
+          - conversation
+          - music
+          write_mode: over-write
+        iteration_id: '1745930063555'
+        selected: false
+        title: Set Music
+        type: assigner
+        version: '2'
+      height: 88
+      id: '1745930086190'
+      parentId: '1745930063555'
+      position:
+        x: 720.2857142857142
+        y: 265.78571428571433
+      positionAbsolute:
+        x: 750.2857142857142
+        y: 872.7857142857143
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+      zIndex: 1002
+    - data:
+        answer: '## Round {{#1745930063555.index#}}
+
+
+          {{#conversation.music#}}
+
+          '
+        desc: ''
+        isInIteration: true
+        isInLoop: false
+        iteration_id: '1745930063555'
+        selected: false
+        title: Debug
+        type: answer
+        variables: []
+      height: 123
+      id: '1745930144972'
+      parentId: '1745930063555'
+      position:
+        x: 725.7142857142856
+        y: 372.57142857142856
+      positionAbsolute:
+        x: 755.7142857142856
+        y: 979.5714285714286
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+      zIndex: 1002
+    - data:
+        desc: ''
+        items:
+        - input_type: variable
+          operation: over-write
+          value:
+          - sys
+          - query
+          variable_selector:
+          - conversation
+          - music
+          write_mode: over-write
+        selected: false
+        title: Init Music
+        type: assigner
+        version: '2'
+      height: 88
+      id: '1745930299951'
+      position:
+        x: 334
+        y: 507
+      positionAbsolute:
+        x: 334
+        y: 507
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        cases:
+        - case_id: 'true'
+          conditions:
+          - comparison_operator: contains
+            id: eb52549e-20f3-4d77-8d5c-f9bc962b7ad1
+            value: '```abc'
+            varType: string
+            variable_selector:
+            - conversation
+            - music
+          id: 'true'
+          logical_operator: and
+        desc: ''
+        isInIteration: true
+        isInLoop: false
+        iteration_id: '1745930063555'
+        selected: false
+        title: IF/ELSE
+        type: if-else
+      height: 126
+      id: '1745931155271'
+      parentId: '1745930063555'
+      position:
+        x: 132.57142857142856
+        y: 96.78571428571433
+      positionAbsolute:
+        x: 162.57142857142856
+        y: 703.7857142857143
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+      zIndex: 1002
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        isInIteration: true
+        isInLoop: false
+        iteration_id: '1745930063555'
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: gpt-4o-mini
+          provider: langgenius/openai/openai
+        prompt_template:
+        - id: 12b4558a-b704-45e1-81bc-a72de6dee08c
+          role: system
+          text: 'Based on user''s query and examples below, create a song in abc annotation.
+            Add some complex combinations by common Piano practices. Be creative.
+
+
+            Example
+
+
+            ```abc
+
+            X: 1
+
+            T: Cooley''s
+
+            M: 4/4
+
+            L: 1/8
+
+            R: reel
+
+            K: Emin
+
+            |:D2|EB{c}BA B2 EB|~B2 AB dBAG|FDAD BDAD|FDAD dAFD|
+
+            EBBA B2 EB|B2 AB defg|afe^c dBAF|DEFD E2:|
+
+            |:gf|eB B2 efge|eB B2 gedB|A2 FA DAFA|A2 FA defg|
+
+            eB B2 eBgB|eB B2 defg|afe^c dBAF|DEFD E2:|
+
+            ```
+
+
+            Correct and Output the result in this format only.
+
+
+            ```abc
+
+            CONTENT
+
+            ```'
+        - role: user
+          text: '{{#conversation.music#}}'
+        selected: false
+        title: Create
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 90
+      id: '1745931181359'
+      parentId: '1745930063555'
+      position:
+        x: 416.57142857142856
+        y: 191.92857142857144
+      positionAbsolute:
+        x: 446.57142857142856
+        y: 798.9285714285714
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+      zIndex: 1002
+    - data:
+        desc: ''
+        isInIteration: true
+        isInLoop: false
+        iteration_id: '1745930063555'
+        output_type: string
+        selected: false
+        title: Variable Aggregator
+        type: variable-aggregator
+        variables:
+        - - '1745931181359'
+          - text
+        - - '1745930077619'
+          - text
+      height: 131
+      id: '1745931372641'
+      parentId: '1745930063555'
+      position:
+        x: 719.1428571428571
+        y: 118.57142857142856
+      positionAbsolute:
+        x: 749.1428571428571
+        y: 725.5714285714286
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+      zIndex: 1002
+    viewport:
+      x: -85.23691781305115
+      y: 110.90745895424527
+      zoom: 0.5232638984772626
