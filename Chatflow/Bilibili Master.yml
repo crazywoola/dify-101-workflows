@@ -1,0 +1,485 @@
+app:
+  description: ''
+  icon: clapper
+  icon_background: '#D5F5F6'
+  mode: advanced-chat
+  name: Bilibili Master
+  use_icon_as_answer_icon: false
+dependencies:
+- current_identifier: null
+  type: marketplace
+  value:
+    marketplace_plugin_unique_identifier: jingfelix/bilibili_search:0.0.2@3474675aa96c42f9fc609eafb0ecc1f39dcf67fb3a1a1e25d8c179dcc122093e
+- current_identifier: null
+  type: marketplace
+  value:
+    marketplace_plugin_unique_identifier: langgenius/openai:0.2.3@5a7f82fa86e28332ad51941d0b491c1e8a38ead539656442f7bf4c6129cd15fa
+kind: app
+version: 0.3.1
+workflow:
+  conversation_variables:
+  - description: ''
+    id: b6b8f3c5-1308-4ad0-984a-660c19cd1de4
+    name: round
+    selector:
+    - conversation
+    - round
+    value:
+    - 1
+    - 2
+    - 3
+    - 4
+    - 5
+    value_type: array[number]
+  environment_variables: []
+  features:
+    file_upload:
+      allowed_file_extensions:
+      - .JPG
+      - .JPEG
+      - .PNG
+      - .GIF
+      - .WEBP
+      - .SVG
+      allowed_file_types:
+      - image
+      allowed_file_upload_methods:
+      - local_file
+      - remote_url
+      enabled: false
+      fileUploadConfig:
+        audio_file_size_limit: 50
+        batch_count_limit: 5
+        file_size_limit: 15
+        image_file_size_limit: 10
+        video_file_size_limit: 100
+        workflow_file_upload_limit: 10
+      image:
+        enabled: false
+        number_limits: 3
+        transfer_methods:
+        - local_file
+        - remote_url
+      number_limits: 3
+    opening_statement: 你想要分析什么呢？
+    retriever_resource:
+      enabled: true
+    sensitive_word_avoidance:
+      enabled: false
+    speech_to_text:
+      enabled: false
+    suggested_questions:
+    - 剖析前 10 播放量的视频标题描述的小技巧
+    - 根据结果找到爆款标题的写作技巧，并且给出一些灵感
+    - 多个维度分析点赞，播放量，标题，描述间的关系
+    suggested_questions_after_answer:
+      enabled: false
+    text_to_speech:
+      enabled: false
+      language: ''
+      voice: ''
+  graph:
+    edges:
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: start
+        targetType: iteration
+      id: 1754575925522-source-1754575981966-target
+      source: '1754575925522'
+      sourceHandle: source
+      target: '1754575981966'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: true
+        isInLoop: false
+        iteration_id: '1754575981966'
+        sourceType: iteration-start
+        targetType: code
+      id: 1754575981966start-source-1754576058780-target
+      source: 1754575981966start
+      sourceHandle: source
+      target: '1754576058780'
+      targetHandle: target
+      type: custom
+      zIndex: 1002
+    - data:
+        isInIteration: true
+        isInLoop: false
+        iteration_id: '1754575981966'
+        sourceType: code
+        targetType: tool
+      id: 1754576058780-source-1754576001595-target
+      source: '1754576058780'
+      sourceHandle: source
+      target: '1754576001595'
+      targetHandle: target
+      type: custom
+      zIndex: 1002
+    - data:
+        isInIteration: true
+        isInLoop: false
+        iteration_id: '1754575981966'
+        sourceType: tool
+        targetType: code
+      id: 1754576001595-source-1754577630896-target
+      source: '1754576001595'
+      sourceHandle: source
+      target: '1754577630896'
+      targetHandle: target
+      type: custom
+      zIndex: 1002
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: iteration
+        targetType: llm
+      id: 1754575981966-source-1754578732097-target
+      source: '1754575981966'
+      sourceHandle: source
+      target: '1754578732097'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: llm
+        targetType: answer
+      id: 1754578732097-source-answer-target
+      source: '1754578732097'
+      sourceHandle: source
+      target: answer
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    nodes:
+    - data:
+        desc: ''
+        selected: false
+        title: Start
+        type: start
+        variables:
+        - allowed_file_extensions: []
+          allowed_file_types:
+          - image
+          allowed_file_upload_methods:
+          - local_file
+          - remote_url
+          label: Titile
+          max_length: 200
+          options: []
+          required: true
+          type: text-input
+          variable: title
+      height: 90
+      id: '1754575925522'
+      position:
+        x: 30
+        y: 511
+      positionAbsolute:
+        x: 30
+        y: 511
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        answer: '{{#1754578732097.text#}}'
+        desc: ''
+        selected: false
+        title: Answer
+        type: answer
+        variables: []
+      height: 105
+      id: answer
+      position:
+        x: 1188.2857142857142
+        y: 505.2857142857142
+      positionAbsolute:
+        x: 1188.2857142857142
+        y: 505.2857142857142
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        desc: ''
+        error_handle_mode: terminated
+        height: 512
+        is_parallel: false
+        iterator_input_type: array[number]
+        iterator_selector:
+        - conversation
+        - round
+        output_selector:
+        - '1754577630896'
+        - result
+        output_type: array[string]
+        parallel_nums: 10
+        selected: false
+        start_node_id: 1754575981966start
+        title: Iteration
+        type: iteration
+        width: 536
+      height: 512
+      id: '1754575981966'
+      position:
+        x: 334
+        y: 511
+      positionAbsolute:
+        x: 334
+        y: 511
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 536
+      zIndex: 1
+    - data:
+        desc: ''
+        isInIteration: true
+        selected: false
+        title: ''
+        type: iteration-start
+      draggable: false
+      height: 48
+      id: 1754575981966start
+      parentId: '1754575981966'
+      position:
+        x: 60
+        y: 63
+      positionAbsolute:
+        x: 394
+        y: 574
+      selectable: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom-iteration-start
+      width: 44
+      zIndex: 1002
+    - data:
+        desc: ''
+        isInIteration: true
+        isInLoop: false
+        is_team_authorization: false
+        iteration_id: '1754575981966'
+        output_schema: null
+        paramSchemas:
+        - auto_generate: null
+          default: null
+          form: llm
+          human_description:
+            en_US: Enter the keywords you want to search on Bilibili
+            ja_JP: Enter the keywords you want to search on Bilibili
+            pt_BR: Digite as palavras-chave que você deseja pesquisar no Bilibili
+            zh_Hans: 输入您想在哔哩哔哩上搜索的关键词
+          label:
+            en_US: Search Keyword
+            ja_JP: Search Keyword
+            pt_BR: Palavra-chave
+            zh_Hans: 搜索关键词
+          llm_description: The keywords to search for on Bilibili platform. This can
+            be video titles, usernames, or any other searchable content.
+          max: null
+          min: null
+          name: keyword
+          options: []
+          placeholder: null
+          precision: null
+          required: true
+          scope: null
+          template: null
+          type: string
+        - auto_generate: null
+          default: null
+          form: llm
+          human_description:
+            en_US: The page number of search results (default is 1)
+            ja_JP: The page number of search results (default is 1)
+            pt_BR: O número da página dos resultados da pesquisa (padrão é 1)
+            zh_Hans: 搜索结果的页码（默认为第1页）
+          label:
+            en_US: Page Number
+            ja_JP: Page Number
+            pt_BR: Número da Página
+            zh_Hans: 页码
+          llm_description: The page number of search results to retrieve. Each page
+            contains multiple results. Defaults to 1 if not specified.
+          max: null
+          min: null
+          name: page
+          options: []
+          placeholder: null
+          precision: null
+          required: false
+          scope: null
+          template: null
+          type: number
+        params:
+          keyword: ''
+          page: ''
+        provider_id: jingfelix/bilibili_search/bilibili_search
+        provider_name: jingfelix/bilibili_search/bilibili_search
+        provider_type: builtin
+        selected: true
+        title: Bilibili Search
+        tool_configurations: {}
+        tool_description: Search for videos on Bilibili
+        tool_label: Bilibili Search
+        tool_name: bilibili_search
+        tool_node_version: '2'
+        tool_parameters:
+          keyword:
+            type: mixed
+            value: '{{#1754575925522.title#}}'
+          page:
+            type: variable
+            value:
+            - '1754575981966'
+            - item
+        type: tool
+      height: 54
+      id: '1754576001595'
+      parentId: '1754575981966'
+      position:
+        x: 207.9999999999999
+        y: 142.8571428571429
+      positionAbsolute:
+        x: 541.9999999999999
+        y: 653.8571428571429
+      selected: true
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+      zIndex: 1002
+    - data:
+        code: "import time\n\ndef main() -> dict:\n    time.sleep(1)\n    return {'result':\
+          \ 'Slept for 1 second'}"
+        code_language: python3
+        desc: ''
+        isInIteration: true
+        isInLoop: false
+        iteration_id: '1754575981966'
+        outputs:
+          result:
+            children: null
+            type: string
+        selected: false
+        title: Sleep
+        type: code
+        variables: []
+      height: 54
+      id: '1754576058780'
+      parentId: '1754575981966'
+      position:
+        x: 204
+        y: 60
+      positionAbsolute:
+        x: 538
+        y: 571
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+      zIndex: 1002
+    - data:
+        code: "def main(data: dict) -> dict:\n    import re\n\n    items = data[0].get(\"\
+          result\", [])\n    rows = [\n    ]\n\n    for item in items:\n        bvid\
+          \ = item.get(\"bvid\", \"\")\n        title = re.sub(r'<[^>]+>', '', item.get(\"\
+          title\", \"\")).strip()\n        clean_title = re.sub(r'[^\\w\\s.,:;!?()\\\
+          -]', '', title)\n        clean_title = re.sub(r'[\\n\\r\\t]', ' ', clean_title)\n\
+          \        clean_title = re.sub(r'\\s+', ' ', clean_title).strip()\n\n   \
+          \     duration = item.get(\"duration\", \"\").strip()\n        play = item.get(\"\
+          play\", 0)\n        like = item.get(\"like\", 0)\n\n        description\
+          \ = item.get(\"description\", \"\").strip()\n        clean_description =\
+          \ re.sub(r'[^\\w\\s.,:;!?()\\-]', '', description)\n        clean_description\
+          \ = re.sub(r'[\\n\\r\\t]', ' ', clean_description)\n        clean_description\
+          \ = re.sub(r'\\s+', ' ', clean_description).strip()\n\n        row = f\"\
+          | {bvid} | {clean_title} | {play} | {duration} | {like} | {clean_description}\
+          \ |\"\n        rows.append(row)\n\n    return {\"result\": \"\\n\".join(rows)}\n"
+        code_language: python3
+        desc: ''
+        isInIteration: true
+        isInLoop: false
+        iteration_id: '1754575981966'
+        outputs:
+          result:
+            children: null
+            type: string
+        selected: false
+        title: Extract Items
+        type: code
+        variables:
+        - value_selector:
+          - '1754576001595'
+          - json
+          value_type: array[object]
+          variable: data
+      height: 54
+      id: '1754577630896'
+      parentId: '1754575981966'
+      position:
+        x: 213.42857142857144
+        y: 231.42857142857144
+      positionAbsolute:
+        x: 547.4285714285714
+        y: 742.4285714285714
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+      zIndex: 1002
+    - data:
+        context:
+          enabled: true
+          variable_selector:
+          - '1754575981966'
+          - output
+        desc: ''
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: gpt-5-chat-latest
+          provider: langgenius/openai/openai
+        prompt_template:
+        - id: 2d08d58d-1e1b-4158-a6ec-895bedab6b73
+          role: system
+          text: '{{#context#}}
+
+
+            Output Context in Markdown table first, then answer the user''s question.'
+        - id: 83afd23a-9ee3-40aa-8971-31a4b28f6c02
+          role: user
+          text: '{{#sys.query#}}'
+        selected: false
+        title: LLM
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 90
+      id: '1754578732097'
+      position:
+        x: 915.7142857142858
+        y: 505.2857142857142
+      positionAbsolute:
+        x: 915.7142857142858
+        y: 505.2857142857142
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    viewport:
+      x: 62.999999999999886
+      y: -118
+      zoom: 0.7
